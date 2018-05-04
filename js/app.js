@@ -1,4 +1,3 @@
-/ Enemy class
 let Enemy = function(x,y,speed) {
     this.x = x;
     this.y = y;
@@ -6,7 +5,9 @@ let Enemy = function(x,y,speed) {
     this.sprite = 'images/enemy-bug.png';
 
 };
-Enemy.prototype.update = function(dt) {};
+Enemy.prototype.update = function(dt) {
+    
+};
 Enemy.prototype.render = function() { ctx.drawImage(Resources.get(this.sprite), this.x, this.y); };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -19,7 +20,19 @@ let Player = function(x,y) {
  
 Player.prototype.update = function() {}
 Player.prototype.render = function(){ ctx.drawImage(Resources.get(this.sprite), this.x, this.y);}
-Player.prototype.handleInput = function(){}
+
+Player.prototype.handleInput = function(keypressed){
+    switch(keypressed){
+        case 'up' : this.y -= 100
+        break;
+        case 'down': this.y += 100
+        break;
+        case 'right': this.x += 100
+        break;
+        case 'left' : this.x -= 100
+        break;
+    }
+}
 
  
 // Place all enemy objects in an array called allEnemies
